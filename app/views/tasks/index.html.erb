@@ -1,0 +1,13 @@
+<div class="index-head">
+<h1>Tasks List</h1>
+<%= link_to "New Task", new_task_path, "class" => "new-task" %>
+</div>
+<ul>
+  <% @tasks.each do |task|  %>
+  <li><input type="checkbox" name="completed" readonly <%= task.checked? %>><%= link_to task.title, task_path(task), "class" => "task-title" %><%= link_to "Delete",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Delete #{task.title}?" },
+            "class" => "delete" %></li>
+  <% end  %>
+</ul>
